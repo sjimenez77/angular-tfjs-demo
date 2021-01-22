@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import * as handpose from '@tensorflow-models/handpose';
@@ -86,7 +90,7 @@ export class HandGesture {
       });
   }
 
-  private _processGesture(landmarks: any): void {
+  private _processGesture(landmarks: unknown): void {
     const { gestures } = GE.estimate(landmarks, 7.5) || [];
     let gesture = null;
     for (const g of gestures) {

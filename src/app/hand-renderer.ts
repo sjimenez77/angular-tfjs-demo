@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 const fingerLookupIndices = {
   thumb: [0, 1, 2, 3, 4],
   indexFinger: [0, 5, 6, 7, 8],
@@ -6,7 +11,10 @@ const fingerLookupIndices = {
   pinky: [0, 17, 18, 19, 20],
 };
 
-export const drawKeypoints = (ctx, keypoints) => {
+export const drawKeypoints = (
+  ctx: CanvasRenderingContext2D,
+  keypoints: { [x: string]: unknown }
+) => {
   const keypointsArray = keypoints;
 
   for (let i = 0; i < keypointsArray.length; i++) {
@@ -16,7 +24,7 @@ export const drawKeypoints = (ctx, keypoints) => {
   }
 
   const fingers = Object.keys(fingerLookupIndices);
-  // tslint:disable-next-line: prefer-for-of
+
   for (let i = 0; i < fingers.length; i++) {
     const finger = fingers[i];
     const points = fingerLookupIndices[finger].map((idx) => keypoints[idx]);
